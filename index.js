@@ -13,7 +13,6 @@ import { countRouter } from "./routes/count.js";
 
 const app = express();
 dotenv.config(); 
-app.use(cors());
 app.use(
         cors({
           origin: "*",
