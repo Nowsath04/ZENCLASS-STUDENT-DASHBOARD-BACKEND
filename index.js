@@ -21,24 +21,6 @@ app.use(
         })
       );
 
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:3000",
-      
-//     ],
-//     credentials: true,
-//   })
-// );
-// app.use((req, res, next) => {
-//         res.setHeader("Access-Control-Allow-Origin", "*");
-//         res.header(
-//           "Access-Control-Allow-Headers",
-//           "Origin, X-Requested-With, Content-Type, Accept"
-//         );
-//         next();
-//       });
-
 app.use(function(req, res, next) {
     res.header(
         "Access-Control-Allow-Headers",
@@ -53,7 +35,7 @@ app.use(function(req, res, next) {
 
 app.use(express.json());
 
-const port = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
 const mongo_URL = process.env.Mongo_URL;
 
@@ -84,4 +66,4 @@ app.use("/count",countRouter);
 // await client.db("zenStudentDashboard").collection("tasks").insertMany(taskData);
 
 
-app.listen(port,()=>console.log(`App has started in port ${port}`));
+app.listen(PORT,()=>console.log(`App has started in port ${PORT}`));
