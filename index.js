@@ -17,6 +17,20 @@ app.use(
   })
 );
 
+app.use(function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-auth-token, Origin, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-control-Allow-Methods", "GET, POST, PUT");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Requested-With, content-type,Accept,Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 // app.use(
 //   cors({
 //     origin: [
@@ -35,20 +49,17 @@ app.use(
 //         next();
 //       });
 
-app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Headers",
-    "x-auth-token, Origin, Content-Type, Accept"
-  );
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-control-Allow-Methods", "GET, POST, PUT");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin,X-Requested-With, content-type,Accept,Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
+// app.use(function(req, res, next) {
+//     res.header(
+//         "Access-Control-Allow-Headers",
+//         "x-auth-token, Origin, Content-Type, Accept"
+//     );
+//     res.setHeader("Access-Control-Allow-Origin","*");
+//     res.setHeader("Access-control-Allow-Methods", "GET, POST, PUT");
+//     res.setHeader("Access-Control-Allow-Headers", "Origin,X-Requested-With, content-type,Accept,Authorization");
+//     res.setHeader("Access-Control-Allow-Credentials", true);
+//     next();
+// });
 
 app.use(express.json());
 
@@ -79,4 +90,4 @@ app.use("/count", countRouter);
 // await client.db("zenStudentDashboard").collection("courses").insertMany(courseData);
 // await client.db("zenStudentDashboard").collection("tasks").insertMany(taskData);
 
-app.listen(port, () => console.log(`App has started in port ${port}`));
+app.listen(PORT, () => console.log(`App has started in port ${PORT}`));
